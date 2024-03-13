@@ -1,0 +1,48 @@
+managed implementation in class ZBP_MARA_TM unique;
+strict ( 2 );
+extensible
+{ with validations on save;
+  with determinations on save;
+  with additional save; }
+with draft;
+
+define behavior for ZR_MARA_TM alias material
+extensible
+persistent table zmara_tm
+draft table zmara_tm_d
+etag master LocalLastChanged
+lock master total etag LastChaged
+authorization master ( global )
+
+{
+  field ( mandatory : create )
+  Matnr;
+
+  field ( readonly )
+  LastChaged,
+  LocalLastChanged;
+
+  field ( readonly : update )
+  Matnr;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for zmara_tm corresponding extensible
+    {
+      Matnr            = matnr;
+      Mtart            = mtart;
+      MatDesc          = mat_desc;
+      Uom              = uom;
+      LocalLastChanged = local_last_changed;
+      LastChaged       = last_chaged;
+    }
+}

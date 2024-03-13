@@ -1,0 +1,58 @@
+unmanaged implementation in class zbp_r_deliveryheader unique;
+strict ( 2 );
+
+define behavior for ZR_DELIVERYHEADER alias Header
+//late numbering
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+  association Item { create; }
+
+  field ( readonly ) Vbeln;
+  field ( mandatory ) Vstel;
+
+  mapping for zlikptm control zcs_likptm
+    {
+      vbeln         = vbeln;
+      erdat         = erdat;
+      ernam         = ernam;
+      vstel         = vstel;
+      vkorg         = vkorg;
+      lfart         = lfart;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+}
+
+define behavior for ZR_DELIVERYITEM alias Item
+implementation in class zbp_r_deliveryitem unique
+
+lock dependent by Header
+etag dependent by Header //etag of the delivery item entity depends on the etag of the delivery header entity
+authorization dependent
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) Vbeln, Posnr;
+
+  association Header;
+
+  mapping for zlipstm control zcs_lipstm
+    {
+      Vbeln   = vbeln;
+      Posnr   = posnr;
+      Matnr   = matnr;
+      Erdat   = erdat;
+      Ernam   = ernam;
+      Vgbel   = vgbel;
+      Vgpos   = vgpos;
+    }
+}

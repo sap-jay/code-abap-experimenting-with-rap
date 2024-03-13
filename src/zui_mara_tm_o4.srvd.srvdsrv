@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for ZC_MARA_TM'
+define service ZUI_MARA_TM_O4 {
+  expose ZC_MARA_TM as material;
+}

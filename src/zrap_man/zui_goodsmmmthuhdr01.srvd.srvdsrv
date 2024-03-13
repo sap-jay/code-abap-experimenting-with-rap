@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZC_GoodsMmmtHuhdr01TP'
+define service ZUI_GoodsMmmtHuhdr01 {
+  expose ZC_GOODSMMMTHUHDR01TP as GoodsMmmtHuhdr;
+  expose ZC_GOODSMMTHUITMTP as GoodsMmtHuitm;
+  expose I_UNITOFMEASURE as UnitOfMeasure;
+}

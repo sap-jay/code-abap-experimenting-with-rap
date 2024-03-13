@@ -1,0 +1,117 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'GoodsMmtHuitm', 
+    typeNamePlural: 'GoodsMmtHuitms', 
+    title: {
+      type: #STANDARD, 
+      label: 'GoodsMmtHuitm', 
+      value: 'GuidStock'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'GuidStock', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_GoodsMmtHuitmTP with
+{
+  @UI.facet: [ {
+    id: 'idGoodsMmtHuitm', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'GoodsMmtHuitm', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  GuidStock;
+  
+  @UI.hidden: true
+  GuidHu;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'Matnr'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Matnr'
+  } ]
+  Matnr;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH, 
+    label: 'Charg'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Charg'
+  } ]
+  Charg;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #HIGH, 
+    label: 'Quan'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Quan'
+  } ]
+  Quan;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 70 
+  } ]
+  CurrencyCode;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  DocID;
+  
+  @UI.lineItem: [ {
+    position: 90 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  DocitmID;
+  
+  @UI.lineItem: [ {
+    position: 100 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 100 
+  } ]
+  CreatedBy;
+  
+  @UI.lineItem: [ {
+    position: 110 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

@@ -1,0 +1,5 @@
+CLASS zbp_r_deliveryheader DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_deliveryheader.
+ENDCLASS.
+
+CLASS zbp_r_deliveryheader IMPLEMENTATION.
+ENDCLASS.

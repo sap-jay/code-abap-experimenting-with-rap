@@ -1,0 +1,136 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'GoodsMmmtHuhdr', 
+    typeNamePlural: 'GoodsMmmtHuhdrs', 
+    title: {
+      type: #STANDARD, 
+      label: 'GoodsMmmtHuhdr', 
+      value: 'GuidHu'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'GuidHu', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_GoodsMmmtHuhdr01TP with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'GoodsMmmtHuhdr', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 20 
+  }, 
+  {
+    id: 'idGoodsMmtHuitm', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'GoodsMmtHuitm', 
+    position: 30 , 
+    targetElement: '_GoodsMmtHuitm'
+  } ]
+  @UI.hidden: true
+  GuidHu;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH, 
+    label: 'Tanum'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Tanum'
+  } ]
+  Tanum;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'Huident'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Huident'
+  } ]
+  Huident;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH, 
+    label: 'Lgnum'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Lgnum'
+  } ]
+  Lgnum;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #HIGH, 
+    label: 'Letyp'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Letyp'
+  } ]
+  Letyp;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  Kunnr;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #HIGH, 
+    label: 'Scode'
+  } ]
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'Scode'
+  } ]
+  Scode;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #HIGH, 
+    label: 'Status'
+  } ]
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Status'
+  } ]
+  Status;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LastChangedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

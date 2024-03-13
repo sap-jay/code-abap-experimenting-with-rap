@@ -1,0 +1,40 @@
+@Metadata.layer: #CORE
+
+@UI: {
+    headerInfo: {
+        typeName: 'Item',
+        typeNamePlural: 'Items',
+        title: {
+            type: #STANDARD,
+            label: 'Sales Order',
+            value: 'Vbeln'
+        } } }
+annotate view ZC_SalesOrderItemTM with
+{
+  @UI.facet: [{
+      id: 'Items',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Sales Order Items',
+      type: #IDENTIFICATION_REFERENCE
+  }]
+  @UI.lineItem: [{ position: 10, label: 'Sales Order' }]
+  @UI.identification: [{ position: 10, label: 'Sales Order' }]
+  Vbeln;
+  @UI.lineItem: [{ position: 20, label: 'Sales Order Item' }]
+  @UI.identification: [{ position: 20, label: 'Sales Order Item' }]
+  Posnr;
+  @UI.lineItem: [{ position: 30, label: 'Material' }]
+  @UI.identification: [{ position: 30, label: 'Material' }]
+  Matnr;
+  @UI.lineItem: [{ position: 40, label: 'Batch' }]
+  @UI.identification: [{ position: 40, label: 'Batch' }]
+  Charg;
+  @UI.lineItem: [{ position: 50, label: 'Quantity' }]
+  @UI.identification: [{ position: 50, label: 'Quantity' }]
+  Qty;
+  @UI.lineItem: [{ position: 60, label: 'UOM' }]
+  @UI.identification: [{ position: 60, label: 'UOM' }]
+  Unit;
+
+}

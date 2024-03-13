@@ -1,0 +1,60 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'material',
+    typeNamePlural: 'materials'
+  }
+}
+annotate view ZC_MARA_TM with
+{
+  @UI.facet: [ {
+    id: 'idIdentification',
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'Material',
+    position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10 ,
+    importance: #MEDIUM
+  } ]
+  @UI.identification: [ {
+    position: 10
+  } ]
+  Matnr;
+
+  @UI.lineItem: [ {
+    position: 20 ,
+    importance: #MEDIUM,
+    label: 'Material Type'
+  } ]
+  @UI.identification: [ {
+    position: 20 ,
+    label: 'Mtart'
+  } ]
+  Mtart;
+
+  @UI.lineItem: [ {
+    position: 40 ,
+    importance: #MEDIUM,
+    label: 'Material Description'
+  } ]
+  @UI.identification: [ {
+    position: 40 ,
+    label: 'Material Descrption'
+  } ]
+  MatDesc;
+
+  @UI.lineItem: [ {
+    position: 50 ,
+    importance: #MEDIUM,
+    label: 'Base Unit OF Measure'
+  } ]
+  @UI.identification: [ {
+    position: 50 ,
+    label: 'Base Unit OF Measure'
+  } ]
+  Uom;
+
+  @UI.hidden: true
+  LocalLastChanged;
+}

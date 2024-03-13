@@ -1,0 +1,95 @@
+managed;
+strict ( 2 );
+with draft;
+define behavior for ZR_GoodsMmmtHuhdr01TP alias GoodsMmmtHuhdr
+implementation in class ZBP_R_GoodsMmmtHuhdr01TP unique
+persistent table ZGMHUHDR
+draft table ZGOODSMMMTHUH00D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   GuidHu;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZGMHUHDR
+  {
+    GuidHu = GUID_HU;
+    Tanum = TANUM;
+    Huident = HUIDENT;
+    Lgnum = LGNUM;
+    Letyp = LETYP;
+    Kunnr = KUNNR;
+    Scode = SCODE;
+    Status = STATUS;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _GoodsMmtHuitm { create; with draft; }
+
+  determination CalculateGuidHu on save { create; }
+}
+
+define behavior for ZR_GoodsMmtHuitmTP alias GoodsMmtHuitm
+implementation in class ZBP_R_GoodsMmtHuitmTP unique
+persistent table ZGMHUITM
+draft table ZGOODSMMTHUIT00D
+etag master LocalLastChangedAt
+lock dependent by _GoodsMmmtHuhdr
+authorization dependent by _GoodsMmmtHuhdr
+
+{
+  field ( readonly )
+   GuidHu,
+   LocalLastChangedAt;
+
+  field ( numbering : managed )
+   GuidStock;
+
+
+  update;
+  delete;
+
+  mapping for ZGMHUITM
+  {
+    GuidStock = GUID_STOCK;
+    GuidHu = GUID_HU;
+    Matnr = MATNR;
+    Charg = CHARG;
+    Quan = QUAN;
+    Meins = MEINS;
+    CurrencyCode = CURRENCY_CODE;
+    DocID = DOCID;
+    DocitmID = DOCITMID;
+    CreatedBy = CREATED_BY;
+    LastChangedBy = LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+  }
+
+  association _GoodsMmmtHuhdr { with draft; }
+
+  determination CalculateGuidStock on save { create; }
+}

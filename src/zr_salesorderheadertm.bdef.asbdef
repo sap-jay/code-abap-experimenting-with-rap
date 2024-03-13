@@ -1,0 +1,78 @@
+managed implementation in class zbp_r_salesorderheadertm unique;
+//strict ( 2 );
+with draft;
+
+define behavior for ZR_SalesOrderHeaderTM alias Header
+persistent table zvbaktm
+draft table zvbaktmd
+lock master
+total etag LastChangedAt
+authorization master ( instance )
+//early numbering
+//late numbering
+{
+  create;
+  update;
+  delete;
+//
+//  draft action Edit;
+//  draft action Activate;
+//  draft action Discard;
+//  draft action Resume;
+
+  field ( mandatory :create) Vbeln;
+ //field (numbering : managed ) Vbeln;
+
+  field ( readonly : update ) Vbeln;
+
+//  action ( features : instance ) approveSO;
+  association _Item { create; with draft; }
+//
+//  determination initialiseSO on save { create; }
+//
+//  validation validateAuart on save { field Auart; create; }
+
+//
+//  draft determine action Prepare
+//  {
+//    validation validateAuart;
+//  }
+
+
+  mapping for zvbaktm corresponding
+    {
+      Vbeln              = vbeln;
+      Auart              = auart;
+      Erdat              = erdat;
+      Ernam              = ernam;
+      Erzet              = erzet;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}
+
+define behavior for ZR_SalesOrderItemTM alias Item
+persistent table zvbaptm
+draft table zvbaptmd
+lock dependent by _Header
+authorization dependent by _Header
+//early numbering
+{
+  update;
+  delete;
+  field ( readonly : update ) Vbeln;
+  field ( readonly : update ) Posnr;
+  association _Header { with draft; }
+
+  mapping for zvbaptm corresponding
+    {
+      Vbeln              = vbeln;
+      Posnr              = posnr;
+      Matnr              = matnr;
+      Charg              = charg;
+      Qty                = qty;
+      Unit               = unit;
+      LastChangedAt      = last_changed_at;
+      LocalLastChangedAt = local_last_changed_at;
+    }
+}

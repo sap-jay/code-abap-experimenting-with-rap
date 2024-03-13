@@ -1,0 +1,8 @@
+extension implementation in class zbp_r_mara_tm_ext unique;
+
+extend behavior for material
+{
+
+  determination zzgetPlantofManufacturing on save { create; }
+
+}
